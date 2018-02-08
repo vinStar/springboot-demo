@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by liutong on 13/01/2018.
+ * Created by vin on 13/01/2018.
  */
 @CrossOrigin(origins = "http://localhost:63342/", maxAge = 3600)//单个controller 允许跨域
 @RestController
