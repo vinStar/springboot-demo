@@ -1,9 +1,12 @@
 package com.example.springboot.controller;
 
+import com.example.springboot.config.TestBean;
+import com.example.springboot.config.TestBean2;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
@@ -15,6 +18,11 @@ import java.util.*;
 @RestController
 @Api(value = "Hello", description = "测试HelloController")
 public class Hello {
+
+    @Autowired
+    TestBean testBean;
+    @Autowired
+    TestBean2 testBean2;
 
     @CrossOrigin("*")
     //默认为 */*
@@ -44,6 +52,8 @@ public class Hello {
     public Map<String, String> sayHi(@RequestParam("hello") String hello) {
         Map<String, String> map = new HashMap<>();
         map.put("hello", hello);
+        map.put("bean", testBean.test().getName());
+        map.put("bean", testBean2.test().getName());
 
         return map;
     }
