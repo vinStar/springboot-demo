@@ -67,6 +67,12 @@
         <!--<artifactId>woodstox-core-asl</artifactId>-->
         <!--</dependency>-->
         <!--xml&json end-->
+        <!--Thumbnailator，一个google使用的开源的图片 工具类(图片压缩、旋转，裁切，加水印)。-->
+        <dependency>
+            <groupId>net.coobird</groupId>
+            <artifactId>thumbnailator</artifactId>
+            <version>0.4.8</version>
+        </dependency>
     </dependencies>
 
 
