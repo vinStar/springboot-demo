@@ -5,11 +5,15 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Arrays;
+import java.util.List;
 
 import javax.imageio.ImageIO;
 
+import com.example.springboot.utils.FileUtils;
 import net.coobird.thumbnailator.Thumbnails;
 import net.coobird.thumbnailator.geometry.Positions;
+import org.apache.commons.lang3.ArrayUtils;
 
 /**
  * Created by vin on 2018/8/22.
@@ -17,22 +21,21 @@ import net.coobird.thumbnailator.geometry.Positions;
 public class ThumbnailatorDemo {
 
     /**
-     *
      * @param args
      * @throws IOException
      */
-    public static void main(String[] args) throws IOException {
-        ThumbnailatorDemo thumbnailatorTest = new ThumbnailatorDemo();
-        //thumbnailatorTest.test1();//指定大小进行缩放
-        thumbnailatorTest.test2();//按照比例进行缩放
-//        thumbnailatorTest.test3();
-//        thumbnailatorTest.test4();
-//        thumbnailatorTest.test5();
-//        thumbnailatorTest.test6();
-//        thumbnailatorTest.test7();
-//        thumbnailatorTest.test8();
-//        thumbnailatorTest.test9();
-    }
+//    public static void main(String[] args) throws IOException {
+//        ThumbnailatorDemo thumbnailatorTest = new ThumbnailatorDemo();
+//        //thumbnailatorTest.test1();//指定大小进行缩放
+//        thumbnailatorTest.test2();//按照比例进行缩放
+////        thumbnailatorTest.test3();
+////        thumbnailatorTest.test4();
+////        thumbnailatorTest.test5();
+////        thumbnailatorTest.test6();
+////        thumbnailatorTest.test7();
+////        thumbnailatorTest.test8();
+////        thumbnailatorTest.test9();
+//    }
 
     /**
      * 指定大小进行缩放
@@ -49,6 +52,47 @@ public class ThumbnailatorDemo {
         Thumbnails.of("images/test.jpg").size(2560, 2048).toFile("C:/image_2560x2048.jpg");
     }
 
+    /*
+     * 函数名：getFile
+     * 作用：使用递归，输出指定文件夹内的所有文件
+     * 参数：path：文件夹路径   deep：表示文件的层次深度，控制前置空格的个数
+     * 前置空格缩进，显示文件层次结构
+     */
+    private static void getFile(String path, int deep) {
+        // 获得指定文件对象
+        File file = new File(path);
+        // 获得该文件夹内的所有文件
+        File[] array = file.listFiles();
+        if (null == array) return;
+
+        //追加到数组内
+        filePaths = ArrayUtils.addAll(filePaths, array);
+        for (int i = 0; i < array.length; i++) {
+            if (array[i].isFile())//如果是文件
+            {
+//                for (int j = 0; j < deep; j++)//输出前置空格
+//                    System.out.print(" ");
+                // 只输出文件名字
+                System.out.println(array[i].getName());
+                // 输出当前文件的完整路径
+                // System.out.println("#####" + array[i]);
+                // 同样输出当前文件的完整路径   大家可以去掉注释 测试一下
+                // System.out.println(array[i].getPath());
+            } else if (array[i].isDirectory())//如果是文件夹
+            {
+//                for (int j = 0; j < deep; j++)//输出前置空格
+//                    System.out.print(" ");
+
+                System.out.println(array[i].getName());
+                //System.out.println(array[i].getPath());
+                //文件夹需要调用递归 ，深度+1
+                getFile(array[i].getPath(), deep + 1);
+            }
+        }
+    }
+
+    static File[] filePaths = new File[0];
+
     /**
      * 按照比例进行缩放
      *
@@ -58,10 +102,25 @@ public class ThumbnailatorDemo {
         /**
          * scale(比例)
          */
-        Thumbnails.of("/Users/liutong/Desktop/ThumbnailatorDemo/12471247766293.jpg").scale(0.20f).toFile("/Users/liutong/Desktop/ThumbnailatorDemo/12471247766293_20%.jpg");
-        Thumbnails.of("/Users/liutong/Desktop/ThumbnailatorDemo/12471247766293.jpg").scale(0.30f).toFile("/Users/liutong/Desktop/ThumbnailatorDemo/12471247766293_30%.jpg");
-        Thumbnails.of("/Users/liutong/Desktop/ThumbnailatorDemo/12471247766293.jpg").scale(0.35f).toFile("/Users/liutong/Desktop/ThumbnailatorDemo/12471247766293_35%.jpg");
-        Thumbnails.of("/Users/liutong/Desktop/ThumbnailatorDemo/12471247766293.jpg").scale(0.40f).toFile("/Users/liutong/Desktop/ThumbnailatorDemo/12471247766293_40%.jpg");
+        String sPath = "/Users/liutong/Desktop/ThumbnailatorDemo/";
+
+        getFile(sPath, 10);
+
+        //        imageFile.list();
+//        List<String> files = FileUtils.findChildrenList(imageFile, true);
+
+
+        for (int i = 0; i < filePaths.length; i++) {
+            String filePath = filePaths[i].toString();
+            if (filePath.endsWith(".jpg")) {
+                Thumbnails.of(filePath).scale(0.30f).toFile(filePath);
+            }
+        }
+
+        //Thumbnails.of("/Users/liutong/Desktop/ThumbnailatorDemo/12471247766293.jpg").scale(0.20f).toFile("/Users/liutong/Desktop/ThumbnailatorDemo/12471247766293.jpg");
+//        Thumbnails.of("/Users/liutong/Desktop/ThumbnailatorDemo/12471247766293.jpg").scale(0.30f).toFile("/Users/liutong/Desktop/ThumbnailatorDemo/12471247766293_30%.jpg");
+//        Thumbnails.of("/Users/liutong/Desktop/ThumbnailatorDemo/12471247766293.jpg").scale(0.35f).toFile("/Users/liutong/Desktop/ThumbnailatorDemo/12471247766293_35%.jpg");
+//        Thumbnails.of("/Users/liutong/Desktop/ThumbnailatorDemo/12471247766293.jpg").scale(0.40f).toFile("/Users/liutong/Desktop/ThumbnailatorDemo/12471247766293_40%.jpg");
     }
 
     /**
