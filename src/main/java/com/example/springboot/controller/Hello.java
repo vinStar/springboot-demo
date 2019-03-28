@@ -65,7 +65,7 @@ public class Hello {
     }
 
 
-    private class User {
+    static class User {
         public String getName() {
             return name;
         }
