@@ -63,7 +63,7 @@ examples,best practices
 
 - jvm 
   - Y:O = 1:2
-  - EDEN:S0:s1 8:1:1 
+  - EDEN:S0:S1 8:1:1 
   - ygc ,fgc
   - string test, a++ ,++a ; jvm 入栈（药柜），b++ 药柜内执行，非 Rload
   
