@@ -6,10 +6,16 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
+
+import okhttp3.*;
+import okhttp3.RequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import sun.rmi.runtime.Log;
 
+import java.io.IOException;
 import java.util.*;
+
 
 /**
  * Created by vin on 13/01/2018.
@@ -81,6 +87,33 @@ public class Hello {
         List<String> testList;
 
     }
+
+    @ApiOperation(value = "okhttp", notes = "okhttp", produces = "application/json")
+    @RequestMapping(value = "/getStars", method = RequestMethod.GET)
+    public String getStars() {
+
+        String str = null;
+        OkHttpClient client = new OkHttpClient();
+        Request request = null;
+        try {
+            request = new Request.Builder().
+                    url("https://api.github.com/_private/browser/stats")
+                    .addHeader("User-Agent", "mozilla").build();
+            Response response = client.newCall(request).execute();
+            str = response.body().string();
+            System.out.println(str);
+        } catch (IOException ioe) {
+            System.out.println(ioe.toString());
+        } finally {
+            request = null;
+            client = null;
+        }
+
+        return str;
+
+
+    }
+
 
 }
 
