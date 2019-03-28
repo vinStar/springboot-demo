@@ -86,16 +86,19 @@ examples,best practices
   
 ## 0x10 junit 
 
-- @RunWith(SpringRunner.class)
-- when springboot and mvc   
-  @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-- interface autowired  
-- 
+- junit
+  - @RunWith(SpringRunner.class)
+  - when springboot and mvc   
+    @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+  - interface autowired
+
+- todo Spring boot + **JUnit5** 
+ 
 
 ## 0x11 lombok
 
 - lombok
- - @Getter , @Setter , @Slf4j
- - Assert , Assert.assertEquals(null, rBucket.get()); 
+  - @Getter , @Setter , @Slf4j
+  - Assert , Assert.assertEquals(null, rBucket.get()); 
  
   
