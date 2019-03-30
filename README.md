@@ -100,5 +100,31 @@ examples,best practices
 - lombok
   - @Getter , @Setter , @Slf4j
   - Assert , Assert.assertEquals(null, rBucket.get()); 
- 
+  
+  
+## 0x12 Create my own spring boot starter
+  
+- modules
+  - base function
+  - autoconfigure
+  - starter
+
+ - aop proxy
+   - JDK  
+     - dependence org.aspectj or  spring-boot-starter-aop
+     - configure 
+       - spring.aop.proxy-target-class=false (default)
+       - my.aop.enable=false 
+       - @ConditionalOnProperty(name = "my.aop.enable", havingValue = "false")
+       - @Aspect
+       - @Configuration
+       - @Around("@annotation(LogExecutionTime)")
+   - CGLIB
+     - non-dependence but need to implements BeanPostProcessor
+     - configure
+       - spring.aop.proxy-target-class=true
+       - @ConditionalOnClass({Enhancer.class})
+       - @ConditionalOnProperty(name = "my.aop.enable", havingValue = "true")
+       - @ConditionalOnMissingBean
+     
   
