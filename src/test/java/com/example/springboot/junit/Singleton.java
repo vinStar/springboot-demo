@@ -45,6 +45,25 @@ public class Singleton {
         Arrays.stream(instance.getClass().getMethods()).forEach(
                 method -> log.info("instance method {}", method.getName()));
 
+        int[] nums = {1, 20, 63, 58, 185, 60, 59, 20};
+        Arrays.stream(nums).sorted().forEach(System.out::println);
+
+
+        /**
+         * 将下列集合中的所有数字乘以10,并得到新集合[1, 20, 63, 58, 185, 60, 59, 20]
+         */
+        Integer[] num1 = {1, 20, 63, 58, 185, 60, 59, 20};
+        Integer[] num2 = Arrays.stream(num1).map(n -> n * 10).toArray(Integer[]::new);
+        Arrays.stream(num2).forEach(System.out::println);
+
+
+        /**
+         * 取出下列集合中的第3到7个值，加上5，得到新的集合[1, 20, 63, 58, 185, 60, 59, 20]
+         */
+        Integer[] num3 = {1, 20, 63, 58, 185, 60, 59, 20};
+        Integer[] num4 = Arrays.stream(num3).skip(2).limit(5).map(x -> x + 5).toArray(Integer[]::new);
+        Arrays.stream(num4).forEach(System.out::println);
+
 
         log.info("intance canonical name {}", instance.getClass().getCanonicalName());
     }
