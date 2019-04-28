@@ -1,0 +1,17 @@
+server:
+  port: 8081
+
+
+#log level
+# \u5305\u65E5\u5FD7
+logging:
+  level:
+   root: debug
+   pers.vin.mq: debug
+spring:
+  application:
+    name: demo-rabbitmq
+
+debug: true
+
+
