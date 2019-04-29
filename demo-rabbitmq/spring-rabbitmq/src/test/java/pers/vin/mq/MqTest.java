@@ -30,9 +30,9 @@ public class MqTest {
 		Assert.assertEquals(true, sendFlag);
 
 		ExecutorService executorService = Executors.newFixedThreadPool(200);
-		CountDownLatch endSignal = new CountDownLatch(10000);
+		CountDownLatch endSignal = new CountDownLatch(500);
 
-		for (int i = 0; i < 10000; i++) {
+		for (int i = 0; i < 500; i++) {
 			final int num = i;
 			// Runnable run;
 			executorService.execute(() -> {
@@ -52,10 +52,15 @@ public class MqTest {
 		}
 		executorService.shutdown();
 
-//
-//		 val consumeFlag = messageConsumer.consume("hello");
-//
-//		 Assert.assertEquals(true, consumeFlag);
+
+		val consumeFlag = messageConsumer.consume("hello");
+
+		try {
+			Thread.sleep(5000l);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Assert.assertEquals(true, consumeFlag);
 
 	}
 

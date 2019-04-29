@@ -20,13 +20,20 @@ public class MessageConsumer {
 
 	private Logger logger = LoggerFactory.getLogger(MessageConsumer.class);
 
+	public static void main(String[] args) {
+		MessageConsumer messageConsumer = new MessageConsumer();
+		messageConsumer.consume("hello");
+	}
+
 	public boolean consume(String queueName) {
 		//连接RabbitMQ
 		ConnectionFactory factory = new ConnectionFactory();
 		factory.setHost("192.168.1.191");
+		factory.setUsername("admin");
+		factory.setPassword("admin");
 		Connection connection = null;
 		Channel channel = null;
-		final String[] strMessage = new String[1];
+
 		try {
 			connection = factory.newConnection();
 			channel = connection.createChannel();
@@ -35,20 +42,31 @@ public class MessageConsumer {
 			channel.queueDeclare(queueName, true, false,
 					false, null);
 
+			//在消息确认之前,不接受其他消息
+			channel.basicQos(1);
+
 			//这里重写了DefaultConsumer的handleDelivery方法，因为发送的时候对消息进行了getByte()，
 			// 在这里要重新组装成String
-			Consumer consumer = new DefaultConsumer(channel) {
+			Channel finalChannel = channel; //effectively final
+			Consumer consumer = new DefaultConsumer(finalChannel) {
+
 				@Override
 				public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body)
 						throws IOException {
-					strMessage[0] = new String(body, "UTF-8");
 
-					logger.info("comsumerTag : " + consumerTag + " ; Received '" + strMessage[0] + "'");
+					String strMessage = new String(body, "UTF-8");
+					try {
+						logger.info("comsumerTag : " + consumerTag + " ; Received '" + strMessage + "'");
+
+					} finally {
+						finalChannel.basicAck(envelope.getDeliveryTag(), false);
+					}
 				}
 			};
-			//上面是声明消费者，这里用声明的消费者消费掉队列中的消息
-			channel.basicConsume(queueName, true, consumer);
 
+			boolean autoAck = false;
+			//上面是声明消费者，这里用声明的消费者消费掉队列中的消息
+			finalChannel.basicConsume(queueName, autoAck, consumer);
 
 			//这里不能关闭连接，调用了消费方法后，消费者会一直连接着rabbitMQ等待消费
 

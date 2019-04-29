@@ -1,8 +1,10 @@
 package pers.vin.mq;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.util.concurrent.TimeoutException;
 
+import com.rabbitmq.client.MessageProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +20,7 @@ public class MessageSender {
 
 	//声明一个队列名字
 	private final static String QUEUE_NAME = "hello";
+
 
 	public boolean sendMessage(String message) {
 		//new一个RabbitMQ的连接工厂
@@ -40,7 +43,9 @@ public class MessageSender {
 			//这里的参数在后面详解
 			channel.queueDeclare(QUEUE_NAME, true, false, false, null);
 			//注意这里调用了getBytes()，发送的其实是byte数组，接收方收到消息后，需要重新组装成String
-			channel.basicPublish("", QUEUE_NAME, null, message.getBytes());
+			channel.basicPublish("", QUEUE_NAME, MessageProperties.PERSISTENT_TEXT_PLAIN, message.getBytes("UTF-8"));
+
+
 
 			log.info("Sent '" + message + "'");
 			//关闭channel和连接
