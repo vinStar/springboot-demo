@@ -23,7 +23,7 @@ public class MessageConsumer {
 	public boolean consume(String queueName) {
 		//连接RabbitMQ
 		ConnectionFactory factory = new ConnectionFactory();
-		factory.setHost("192.168.1.172");
+		factory.setHost("192.168.1.191");
 		Connection connection = null;
 		Channel channel = null;
 		final String[] strMessage = new String[1];
@@ -47,9 +47,8 @@ public class MessageConsumer {
 				}
 			};
 			//上面是声明消费者，这里用声明的消费者消费掉队列中的消息
-			val str = channel.basicConsume(queueName, true, consumer);
+			channel.basicConsume(queueName, true, consumer);
 
-			logger.info("result " + strMessage[0]);
 
 			//这里不能关闭连接，调用了消费方法后，消费者会一直连接着rabbitMQ等待消费
 
