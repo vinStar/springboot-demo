@@ -1,0 +1,11 @@
+com\example\demo\task\GoodsTask.class
+com\example\demo\ConsumerApplication.class
+com\example\demo\SnowflakeIdWorker.class
+com\example\demo\Controller\MqController.class
+com\example\demo\config\MQConsumerConfiguration.class
+com\example\demo\DES3Util.class
+com\example\demo\config\MQProducerConfiguration.class
+com\example\demo\Controller\DesController.class
+com\example\demo\config\GoodsListener.class
+com\example\demo\Controller\SnowIdWorkerController.class
+com\example\demo\DESEncryptUtil.class

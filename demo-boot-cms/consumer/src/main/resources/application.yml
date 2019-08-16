@@ -1,0 +1,20 @@
+server:
+  port: 9998
+
+
+spring:
+  application:
+    name: demo-consumer
+
+
+  #===================================rocketmq======================
+
+rocketmq:
+    consumer: ###consumer
+      isOnOff: on #该应用是否启用消费者
+      namesrvAddr: 192.168.0.38:9876;192.168.0.39:9876    #mq的nameserver地址
+      consumeThreadMin: 20
+      consumeThreadMax: 64
+      consumeMessageBatchMaxSize: 1 #设置一次消费消息的条数，默认为1条
+      goodsTopics: liutong_test_topic~*;  #该消费者订阅的主题和tags("*"号表示订阅该主题下所有的tags),格式：topic~tag1||tag2||tag3;topic2~*;
+      goodsGroupName: ${spring.application.name}-test88

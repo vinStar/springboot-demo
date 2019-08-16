@@ -1,0 +1,25 @@
+<html>
+<head>
+    <title>
+
+        <script src="https://cdn.bootcss.com/jquery/1.4.2/jquery.min.js"></script>
+        <script>
+            $.ajax({
+                url: 'http://query.yahooapis.com/v1/public/yql',
+                dataType: 'jsonp',
+                data: {
+                    q: 'select * from json where url="https://restapi.amap.com//v3/geocode/geo?address=%E6%B2%B3%E5%8C%97%E7%9C%81&key=43f9021c1e6c33254d8aae413491b83e"',
+                    format: "json"
+                },
+                success: function (d) {
+                    d = d.query.results.json;
+                    console.log(d)
+                    alert(JSON.stringify(d))//远程json数据放在query.results下
+                }
+            });
+
+        </script>
+    </title>
+</head>
+
+</html>
