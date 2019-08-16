@@ -1,0 +1,51 @@
+server:
+  port: 9998
+
+
+
+spring:
+  application:
+    name: demo-feign-lt
+
+
+#================================= eureka 相关配置 ====================================
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.0.32:8761/eureka/,http://192.168.0.33:8761/eureka/,http://192.168.0.34:8761/eureka/
+
+
+
+
+#================================= ribbon 相关配置 ====================================
+ribbon:
+  #配置首台服务器重试次数 , 默认为 0
+  #MaxAutoRetries: 0
+  #配置其他服务器重试次数，默认为 1
+  #MaxAutoRetriesNextServer: 1
+  #链接超时时间，默认 1000 =1s
+  ConnectTimeout: 6000
+  #请求处理时间，默认 1000 = 1s
+  ReadTimeout: 6000
+
+
+
+feign:
+  my-feign-name:  demo-service-lt
+
+#================================= swagger 相关配置 ====================================
+swagger:
+  base-package: com.example.demo
+  title: service timeout
+  description: xxx系统。
+  version: 1.0
+  contact:
+    name: xx
+    email: 123@qq.com
+  enabled: true
+  authorization:
+    key-name: loginToken
+# 解决swagger报空异常
+logging:
+  level:
+    io.swagger.models.parameters.AbstractSerializableParameter: error
