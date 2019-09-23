@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+spring:
+  data:
+    elasticsearch:
+      cluster-name: docker-cluster
+      cluster-nodes: 10.0.0.139:9300
+
+
+#================================= swagger 相关配置 ====================================
+swagger:
+  base-package: pers.example.es.bootes
+  title: es
+  description: es
+  version: 1.0
+  contact:
+    name: wang
+    email: 123@qq.com
+  enabled: true
+  authorization:
+    key-name: loginToken
+# 解决swagger报空异常
+logging:
+  level:
+    io.swagger.models.parameters.AbstractSerializableParameter: error
+
