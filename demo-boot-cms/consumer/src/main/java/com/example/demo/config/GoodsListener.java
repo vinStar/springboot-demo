@@ -29,9 +29,11 @@ public class GoodsListener implements MessageListenerConcurrently {
 
     @Override
     public ConsumeConcurrentlyStatus consumeMessage(List<MessageExt> msgs, ConsumeConcurrentlyContext context) {
+        //todo 五次消费失败，进行报警（邮件，入库等等。。。。）
+        //msgs.get(1).getReconsumeTimes()==5
+
         logger.info(String.format("%s Receive New Messages: %s %n", Thread.currentThread().getName(), msgs));
         for (MessageExt messageExt : msgs) {
-
 
 
             byte[] body = messageExt.getBody();
@@ -44,7 +46,7 @@ public class GoodsListener implements MessageListenerConcurrently {
             executor.execute(futureTask);
             try {
                 Boolean isTrue = futureTask.get();
-              //  isTrue = false;
+                //  isTrue = false;
                 logger.info(String.format("返回结果 %s", isTrue));
                 if (isTrue) {
                     return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;

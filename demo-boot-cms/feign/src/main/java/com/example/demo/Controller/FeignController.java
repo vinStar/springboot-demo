@@ -131,11 +131,27 @@ public class FeignController {
         return "synonym";
     }
 
+    @ApiOperation(value = "shutdown 60000", httpMethod = "GET")
+    @RequestMapping("60000")
+    public String shutdown60000() {
+
+
+        try {
+            myFeign.shutdown60000();
+        } catch (Exception e) {
+            log.error("error : {}", e);
+
+            return "error";
+        }
+
+        return "synonym shutdown60000";
+    }
+
     @ApiOperation(value = "bo set ", httpMethod = "POST")
     @RequestMapping("boset")
     public String boSet(
             @ApiParam(name = "商品参数", value = "传入json格式", required = true)
-            @RequestBody GoodsBO goodsBO ) {
+            @RequestBody GoodsBO goodsBO) {
 
         try {
             log.info(goodsBO.toString());

@@ -1,7 +1,7 @@
 package com.example.springboot.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.log4j.MDC;
+import org.slf4j.MDC;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,6 +22,9 @@ public class MdcController {
 		log.info("mdc Hello world");
 		MDC.clear();
 		log.info(" Hello world");
+
+		StringBuffer result = new StringBuffer("");
+
 	}
 
 }

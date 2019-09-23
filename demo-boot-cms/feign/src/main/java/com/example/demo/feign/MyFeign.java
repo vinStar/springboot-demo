@@ -38,5 +38,7 @@ public interface MyFeign {
     @RequestMapping("61000")
     String timeout61000();
 
+    @RequestMapping("60000")
+    String shutdown60000();
 
 }
