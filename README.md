@@ -139,3 +139,4 @@ examples,best practices
   9. JavaStackTest 栈深度测试，递归深度，defalut stack height:32593 ； -Xss100m = 4429156   
   10. String.join  逗号分隔
   11. mycat-demo-parent ， mycat 分表 demo  
+  12. demo-check-request-parameters 入参检验，全局异常，自定义异常， 注解校验 javax.validation.constraints.NotBlank;   
