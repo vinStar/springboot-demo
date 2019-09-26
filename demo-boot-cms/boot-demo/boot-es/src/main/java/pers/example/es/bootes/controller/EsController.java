@@ -8,11 +8,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pers.example.es.bootes.bean.Article;
+import pers.example.es.bootes.bean.ArticleBO;
 import pers.example.es.bootes.service.ESService;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
 
 @RestController
@@ -38,9 +40,16 @@ public class EsController {
 
         for (int i = 0; i < max + 10; i++) {
             Article article = new Article();
-            article.setId((long) i);
+            article.setId(max + i);
             article.setTitle("测试" + i);
             article.setContent("测试1文字啊啊" + i);
+            if (i % 2 == 1) {
+                article.setVip(true);
+            } else {
+                article.setVip(false);
+            }
+            article.setWordAmount(i * 10);
+
             list.add(article);
         }
         esService.addSome(list);
@@ -63,12 +72,36 @@ public class EsController {
         return all;
     }
 
-    @PostMapping("queryAllByArticleTitle")
-    @ApiOperation(value = "es queryAllByArticleTitle")
-    public Iterable<Article> queryAllByArticleTitle(
-            @ApiParam(name = "按文章title查询", value = "出入json", required = true)
+    @PostMapping("matchQueryAllByArticleTitle")
+    @ApiOperation(value = "es queryAllByArticleTitle  / match query ")
+    public Iterable<Article> matchQueryAllByArticleTitle(
+            @ApiParam(name = "按文章title查询 match query ", value = "出入json", required = true)
             @RequestBody Article article) {
         Iterable<Article> all = esService.findArticleByTitle(article);
+        all.forEach(one -> {
+            log.info(one.toString());
+        });
+        return all;
+    }
+
+    @PostMapping("matchQueryArticle")
+    @ApiOperation(value = "es queryArticle / multi match query", httpMethod = "POST")
+    public Iterable<Article> matchQueryArticle(
+            @ApiParam(name = "按文章title查询 multi match query", value = "出入json", required = true)
+            @RequestBody Article article) {
+        Iterable<Article> all = esService.findArticle(article);
+        all.forEach(one -> {
+            log.info(one.toString());
+        });
+        return all;
+    }
+
+    @PostMapping("boolQueryArticle")
+    @ApiOperation(value = "es queryArticle / multi bool query")
+    public Iterable<Article> boolQueryArticle(
+            @ApiParam(name = "按文章title查询 multi bool query", value = "出入json", required = true)
+            @RequestBody ArticleBO articleBO) {
+        Iterable<Article> all = esService.findBoolArticle(articleBO);
         all.forEach(one -> {
             log.info(one.toString());
         });
@@ -83,6 +116,19 @@ public class EsController {
         article.setId(1L);
         article.setTitle("测试1");
         article.setContent("测试1文字啊啊");
+        article.setVip(true);
+        article.setWordAmount(100);
+        esService.add(article);
+    }
+
+    @PostMapping("addArticle")
+    @ApiOperation(value = "es add article", httpMethod = "POST")
+    public void addArticle(
+            @ApiParam(name = "添加文章", value = "自定义添加文章 json 对象")
+            @RequestBody Article article
+    ) {
+        Random random = new Random();
+        article.setId(random.nextLong());
         esService.add(article);
     }
 
@@ -93,6 +139,9 @@ public class EsController {
         article.setId(1L);
         article.setTitle("测试1");
         article.setContent("测试1修改啊啊");
+
+        article.setVip(true);
+        article.setWordAmount(1010);
         esService.add(article);
     }
 
@@ -108,6 +157,5 @@ public class EsController {
     public Optional<Article> getOne(@PathVariable("id") Long id) {
         return esService.findOne(id);
     }
-
 
 }

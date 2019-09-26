@@ -1,6 +1,7 @@
 package pers.example.es.bootes.service;
 
 import pers.example.es.bootes.bean.Article;
+import pers.example.es.bootes.bean.ArticleBO;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,4 +26,8 @@ public interface ESService {
     Optional<Article> findOne(Long id);
 
     Iterable<Article> findArticleByTitle(Article article);
+
+    Iterable<Article> findArticle(Article article);
+
+    Iterable<Article> findBoolArticle(ArticleBO articleBO);
 }

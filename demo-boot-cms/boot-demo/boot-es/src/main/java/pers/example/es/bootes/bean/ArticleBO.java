@@ -14,15 +14,13 @@ import java.io.Serializable;
  * @date 2019/9/9
  */
 @Data
-@Document(indexName = "test", type = "article")
-@ApiModel(value = "文章")
-public class Article implements Serializable {
+@ApiModel(value = "文章入参")
+public class ArticleBO implements Serializable {
 
     @ApiModelProperty(value = "id")
     private Long id;
 
     @ApiModelProperty(value = "文章 title")
-    @Field(type = FieldType.Text, analyzer = "ik_max_word")
     private String title;
 
     @ApiModelProperty(value = "文章 内容")
@@ -31,7 +29,9 @@ public class Article implements Serializable {
     @ApiModelProperty(value = "是否 vip  ")
     private Boolean vip;
 
-    @ApiModelProperty(value = "文章字数")
-    private Integer wordAmount;
+    @ApiModelProperty(value = "筛选文章开始字数")
+    private Integer wordsBegin;
 
+    @ApiModelProperty(value = "筛选文章结束字数")
+    private Integer wordsEnd;
 }

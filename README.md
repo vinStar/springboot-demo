@@ -84,7 +84,7 @@ examples,best practices
   - map(RMap<String, Integer> map = redisson.getMap("myMap");)
   - incr(RAtomicDouble rAtomicDouble = redisson.getAtomicDouble("myIncr");)
   
-## 0x10 junit 
+## 0xa junit 
 
 - junit
   - @RunWith(SpringRunner.class)
@@ -95,14 +95,14 @@ examples,best practices
 - todo Spring boot + **JUnit5** 
  
 
-## 0x11 lombok
+## 0xb lombok
 
 - lombok
   - @Getter , @Setter , @Slf4j
   - Assert , Assert.assertEquals(null, rBucket.get()); 
   
   
-## 0x12 Create my own spring boot starter
+## 0xc Create my own spring boot starter
   
 - modules
   - base function
@@ -127,8 +127,8 @@ examples,best practices
        - @ConditionalOnProperty(name = "my.aop.enable", havingValue = "true")
        - @ConditionalOnMissingBean
      
-## 0x13 2019-09-24  
-  1. es   
+## 0xd 2019-09-24  
+  1. es   (curd)  
   2. one-time password  
   3. rocketmq  
   4. feign read time out  
@@ -141,3 +141,8 @@ examples,best practices
   11. mycat-demo-parent ， mycat 分表 demo  
   12. demo-check-request-parameters 入参检验，全局异常，自定义异常， 注解校验 javax.validation.constraints.NotBlank;   
   13. easyexcel-encapsulation 便捷导出 excel
+
+## 0xe es  
+
+  1. es , match query \ bool  query (multi fields , range , page , sort )   
+  2. java call python script  
