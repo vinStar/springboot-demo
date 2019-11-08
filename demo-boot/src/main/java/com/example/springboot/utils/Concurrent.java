@@ -28,7 +28,7 @@ public class Concurrent {
 	public static final int concurrentThreadNum = 20;
 
 	public static void main(String[] args) throws InterruptedException {
-		request(requestTotal, concurrentThreadNum, "http://192.168.1.191:8071/qa/question?qType=1&index=1");
+		request(requestTotal, concurrentThreadNum, "http://10.0.1.191:8071/qa/question?qType=1&index=1");
 		//requestMulti(requestTotal, concurrentThreadNum, "http://192.168.1.191:8071/qa/question?qType=1&index=1");
 	}
 

@@ -9,10 +9,11 @@ import org.springframework.context.annotation.Configuration;
  * Created by vin on 2018/6/21.
  */
 @Configuration
+
 public class TestBean2 implements InitializingBean, DisposableBean {
 
 
-	@Bean
+	@Bean(name = "test2")
 	public IAppName test() {
 		return () -> "test bean 2";
 	}

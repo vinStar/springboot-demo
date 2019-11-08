@@ -6,22 +6,27 @@ import org.redisson.config.Config;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableAsync;
 
+/**
+ * demo app
+ */
 @Slf4j
 @SpringBootApplication
+@EnableAsync
 public class DemoApplication {
 
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 
-		log.info("start app");
-		SpringApplication.run(DemoApplication.class, args);
+        log.info("start app");
+        SpringApplication.run(DemoApplication.class, args);
 
-	}
+    }
 
-	@Override
-	protected void finalize() throws Throwable {
-		System.out.println("垃圾回收机制之前调用。。。");
-	}
+    @Override
+    protected void finalize() throws Throwable {
+        System.out.println("垃圾回收机制之前调用。。。");
+    }
 
 }

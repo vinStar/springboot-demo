@@ -10,7 +10,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://192.168.0.32:8761/eureka/,http://192.168.0.33:8761/eureka/,http://192.168.0.34:8761/eureka/
+      defaultZone: http://10.0.0.32:8761/eureka/,http://10.0.0.33:8761/eureka/,http://10.0.0.34:8761/eureka/
 
 #================================= swagger 相关配置 ====================================
 swagger:

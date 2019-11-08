@@ -21,6 +21,7 @@
         <option value="$PROJECT_DIR$/demo-boot-cms/service-gracefulshutdown/pom.xml" />
         <option value="$PROJECT_DIR$/demo-boot-cms/boot-demo/pom.xml" />
         <option value="$PROJECT_DIR$/demo-boot-cms/producer/pom.xml" />
+        <option value="$PROJECT_DIR$/demo-boot-cms/service-inf/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

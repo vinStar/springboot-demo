@@ -1,5 +1,7 @@
 package com.example.demo.feign;
 
+
+import com.example.demo.inf.beans.FeignBean;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
@@ -40,5 +42,9 @@ public interface MyFeign {
 
     @RequestMapping("60000")
     String shutdown60000();
+
+
+    @RequestMapping("testFeignBean")
+    FeignBean testFeignBean();
 
 }

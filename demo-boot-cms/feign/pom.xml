@@ -91,6 +91,11 @@
             <artifactId>swagger-spring-boot-starter</artifactId>
             <version>1.9.0.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>service-inf</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
     </dependencies>
 

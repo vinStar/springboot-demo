@@ -2,7 +2,9 @@ package com.example.demo.Controller;
 
 
 import com.example.demo.bean.bo.GoodsBO;
+
 import com.example.demo.feign.MyFeign;
+import com.example.demo.inf.beans.FeignBean;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -187,6 +189,24 @@ public class FeignController {
         }
 
         return "synonym";
+    }
+
+    @ApiOperation(value = "testFeignBean  Long Integer List<Long> List<Integer>", httpMethod = "GET")
+    @RequestMapping("testFeignBean")
+    public FeignBean testFeignBean() {
+
+        FeignBean bean = null;
+        try {
+            bean = myFeign.testFeignBean();
+
+            log.info(bean.toString());
+        } catch (Exception e) {
+            log.error("error : {}", e);
+
+            return bean;
+        }
+
+        return bean;
     }
 
 

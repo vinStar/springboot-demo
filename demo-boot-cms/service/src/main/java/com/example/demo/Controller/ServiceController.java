@@ -1,13 +1,20 @@
 package com.example.demo.Controller;
 
 
+import com.example.demo.inf.beans.FeignBean;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.ArrayUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 @RestController
 @Slf4j
@@ -122,7 +129,6 @@ public class ServiceController {
     public String timeout61000() {
 
 
-
         try {
             log.info("begin timeout61000");
             Thread.sleep(61000L);
@@ -136,4 +142,43 @@ public class ServiceController {
         return "synonym 61000";
     }
 
+
+    @ApiOperation(value = "testFeignBean  Long Integer List<Long> List<Integer>", httpMethod = "GET")
+    @RequestMapping("testFeignBean")
+    public FeignBean testFeignBean() {
+
+        FeignBean feignBean = new FeignBean();
+        feignBean.setS1("test");
+        feignBean.setInt1(100);
+        feignBean.setL1(100L);
+
+        List<Integer> integerList = new ArrayList<>();
+        integerList.add(1);
+        integerList.add(2);
+
+        List<Long> longList = new ArrayList<>();
+        longList.add(1L);
+        longList.add(2L);
+        feignBean.setIntegerList(integerList);
+        feignBean.setLongList(longList);
+        feignBean.setDate1(new Date());
+
+
+        return feignBean;
+    }
+
+    @ApiOperation(value = "前端 testFeignBean  Long Integer List<Long> List<Integer>", httpMethod = "POST")
+    @RequestMapping(value = "frontFeignBean", method = RequestMethod.POST)
+    public FeignBean frontFeignBean(
+            @ApiParam(name = "long 类型转换 ")
+            @RequestBody FeignBean feignBean) {
+
+        log.info(feignBean.toString());
+        return feignBean;
+    }
+
+
 }
+
+
+
