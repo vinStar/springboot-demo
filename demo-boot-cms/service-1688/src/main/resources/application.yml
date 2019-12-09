@@ -1,0 +1,45 @@
+server:
+  port: 9999
+
+
+spring:
+  application:
+    name: demo-service-graceshutdown-lt
+
+#================================= eureka 相关配置 ====================================
+eureka:
+  client:
+    service-url:
+      defaultZone: http://10.0.0.32:8761/eureka/,http://10.0.0.33:8761/eureka/,http://10.0.0.34:8761/eureka/
+
+#================================= swagger 相关配置 ====================================
+swagger:
+  base-package: com.example.demo
+  title: service graceshutdown
+  description: xxx系统。
+  version: 1.0
+  contact:
+    name: xxxx
+    email: 123@qq.com
+  enabled: true
+  authorization:
+    key-name: loginToken
+# 解决swagger报空异常
+logging:
+  level:
+    io.swagger.models.parameters.AbstractSerializableParameter: error
+
+#=== eureka  Actuator相关配置 ====================================
+management:
+  health:
+    elasticsearch:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: service-registry
+  endpoint:
+    health:
+      show-details: always
+    shutdown:
+      enabled: true #启用shutdown端点
