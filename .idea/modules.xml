@@ -14,6 +14,7 @@
       <module fileurl="file://$PROJECT_DIR$/myStarter-spring-boot-autoconfigure/myStarter-spring-boot-autoconfigure.iml" filepath="$PROJECT_DIR$/myStarter-spring-boot-autoconfigure/myStarter-spring-boot-autoconfigure.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo-boot-cms/producer/producer.iml" filepath="$PROJECT_DIR$/demo-boot-cms/producer/producer.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo-boot-cms/service/service.iml" filepath="$PROJECT_DIR$/demo-boot-cms/service/service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo-boot-cms/service-1688/service-1688.iml" filepath="$PROJECT_DIR$/demo-boot-cms/service-1688/service-1688.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo-boot-cms/service-gracefulshutdown/service-gracefulshutdown.iml" filepath="$PROJECT_DIR$/demo-boot-cms/service-gracefulshutdown/service-gracefulshutdown.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo-boot-cms/service-inf/service-inf.iml" filepath="$PROJECT_DIR$/demo-boot-cms/service-inf/service-inf.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo-rabbitmq/spring-rabbitmq/spirng-rabbitmq.iml" filepath="$PROJECT_DIR$/demo-rabbitmq/spring-rabbitmq/spirng-rabbitmq.iml" />

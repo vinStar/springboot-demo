@@ -22,6 +22,8 @@
         <option value="$PROJECT_DIR$/demo-boot-cms/boot-demo/pom.xml" />
         <option value="$PROJECT_DIR$/demo-boot-cms/producer/pom.xml" />
         <option value="$PROJECT_DIR$/demo-boot-cms/service-inf/pom.xml" />
+        <option value="$PROJECT_DIR$/demo-boot-cms/service-1688/pom.xml" />
+        <option value="$PROJECT_DIR$/demo-boot-cms/service-1688/service-1688/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
