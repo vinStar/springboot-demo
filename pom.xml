@@ -15,6 +15,7 @@
     <modules>
         <module>demo-boot</module>
         <module>demo-rabbitmq</module>
+        <module>demo-nacos</module>
     </modules>
 
     <packaging>pom</packaging>

@@ -6,18 +6,21 @@
       <module fileurl="file://$PROJECT_DIR$/demo-boot-cms/boot-demo/boot-es/boot-es.iml" filepath="$PROJECT_DIR$/demo-boot-cms/boot-demo/boot-es/boot-es.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo-boot-cms/consumer/consumer.iml" filepath="$PROJECT_DIR$/demo-boot-cms/consumer/consumer.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo-boot/demo-boot.iml" filepath="$PROJECT_DIR$/demo-boot/demo-boot.iml" />
-      <module fileurl="file://$PROJECT_DIR$/demo-rabbitmq/demo.rabbitmq.iml" filepath="$PROJECT_DIR$/demo-rabbitmq/demo.rabbitmq.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo-nacos/demo-nacos.iml" filepath="$PROJECT_DIR$/demo-nacos/demo-nacos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo-rabbitmq/demo-rabbitmq.iml" filepath="$PROJECT_DIR$/demo-rabbitmq/demo-rabbitmq.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo-boot-cms/feign/feign.iml" filepath="$PROJECT_DIR$/demo-boot-cms/feign/feign.iml" />
       <module fileurl="file://$PROJECT_DIR$/myStarter-base-function/myStarter-base-function.iml" filepath="$PROJECT_DIR$/myStarter-base-function/myStarter-base-function.iml" />
-      <module fileurl="file://$PROJECT_DIR$/myStarter-spring-boot-starter/myStarter-spirng-boot-starter.iml" filepath="$PROJECT_DIR$/myStarter-spring-boot-starter/myStarter-spirng-boot-starter.iml" />
-      <module fileurl="file://$PROJECT_DIR$/myStarter-spring-boot-starter-test/myStarter-spirng-boot-test.iml" filepath="$PROJECT_DIR$/myStarter-spring-boot-starter-test/myStarter-spirng-boot-test.iml" />
       <module fileurl="file://$PROJECT_DIR$/myStarter-spring-boot-autoconfigure/myStarter-spring-boot-autoconfigure.iml" filepath="$PROJECT_DIR$/myStarter-spring-boot-autoconfigure/myStarter-spring-boot-autoconfigure.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myStarter-spring-boot-starter/myStarter-spring-boot-starter.iml" filepath="$PROJECT_DIR$/myStarter-spring-boot-starter/myStarter-spring-boot-starter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/myStarter-spring-boot-starter-test/myStarter-spring-boot-starter-test.iml" filepath="$PROJECT_DIR$/myStarter-spring-boot-starter-test/myStarter-spring-boot-starter-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo-nacos/nacos-consumer/nacos-consumer.iml" filepath="$PROJECT_DIR$/demo-nacos/nacos-consumer/nacos-consumer.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo-boot-cms/producer/producer.iml" filepath="$PROJECT_DIR$/demo-boot-cms/producer/producer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo-nacos/provider/provider.iml" filepath="$PROJECT_DIR$/demo-nacos/provider/provider.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo-boot-cms/service/service.iml" filepath="$PROJECT_DIR$/demo-boot-cms/service/service.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo-boot-cms/service-1688/service-1688.iml" filepath="$PROJECT_DIR$/demo-boot-cms/service-1688/service-1688.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo-boot-cms/service-gracefulshutdown/service-gracefulshutdown.iml" filepath="$PROJECT_DIR$/demo-boot-cms/service-gracefulshutdown/service-gracefulshutdown.iml" />
       <module fileurl="file://$PROJECT_DIR$/demo-boot-cms/service-inf/service-inf.iml" filepath="$PROJECT_DIR$/demo-boot-cms/service-inf/service-inf.iml" />
-      <module fileurl="file://$PROJECT_DIR$/demo-rabbitmq/spring-rabbitmq/spirng-rabbitmq.iml" filepath="$PROJECT_DIR$/demo-rabbitmq/spring-rabbitmq/spirng-rabbitmq.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo-rabbitmq/spring-rabbitmq/spring-rabbitmq.iml" filepath="$PROJECT_DIR$/demo-rabbitmq/spring-rabbitmq/spring-rabbitmq.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/springboot-demo.iml" filepath="$PROJECT_DIR$/.idea/springboot-demo.iml" />
     </modules>
   </component>

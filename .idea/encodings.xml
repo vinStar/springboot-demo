@@ -11,10 +11,11 @@
     <file url="file://$PROJECT_DIR$/demo-boot-cms/producer/src/main/resources/application.yml" charset="GBK" />
     <file url="file://$PROJECT_DIR$/demo-boot-cms/service" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-boot-cms/service-1688" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/demo-boot-cms/service-1688" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/demo-boot-cms/service-1688/service-1688" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-boot-cms/service-gracefulshutdown" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-boot-cms/service-inf" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo-nacos" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo-nacos/nacos-consumer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/demo-nacos/provider" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-rabbitmq" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/demo-rabbitmq/spring-rabbitmq" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/myStarter-base-function" charset="UTF-8" />
