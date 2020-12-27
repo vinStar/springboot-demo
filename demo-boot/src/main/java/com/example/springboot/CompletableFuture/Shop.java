@@ -1,6 +1,7 @@
 package com.example.springboot.CompletableFuture;
 
 import javax.annotation.processing.Completion;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -48,12 +49,12 @@ public class Shop {
                 new Shop("shop7"),
                 new Shop("shop8")
         );
-        //  method 1
-        List<String> list = shops.parallelStream().map(shop ->
-                String.format("%s price is %.6f ", shop.getName(), shop.getPice("product")))
-                .collect(Collectors.toList());
-
-        System.out.println(list);
+//        //  method 1
+//        List<String> list = shops.parallelStream().map(shop ->
+//                String.format("%s price is %.6f ", shop.getName(), shop.getPice("product")))
+//                .collect(Collectors.toList());
+//
+//        System.out.println(list);
 
 //
         Executor executor = Executors.newCachedThreadPool();
@@ -75,8 +76,17 @@ public class Shop {
         CompletableFuture<Double> aa = CompletableFuture.supplyAsync(() -> new Shop("shop3").getPice("product"), executor);
         System.out.println(" supplyAsync price " + aa.get());
 
+        List<Double> listStr = new ArrayList<>();
+        CompletableFuture<?>[] priceFuture2 = shops.parallelStream()
+                .map(shop -> CompletableFuture
+                        .supplyAsync(() -> shop.getPice("product"), executor)
+                        .whenComplete((result, th) -> {
+                            System.out.println("hello" + result);
+                            listStr.add(result);
+                        })).toArray(CompletableFuture[]::new);
+        CompletableFuture.allOf(priceFuture2).join();
 
-
+        System.out.println(listStr);
     }
 
 
