@@ -38,7 +38,7 @@ public class MyListener implements ApplicationListener {
             case "ContextRefreshedEvent":
                 System.out.println("上下文刷新");
                 if (event instanceof ContextRefreshedEvent) {
-                    Object stu = ((ContextRefreshedEvent) event).getApplicationContext().getBean("stu");
+                    Object stu = ((ContextRefreshedEvent) event).getApplicationContext().getBean("haManager");
                     System.out.println(stu);
                 }
                 break;

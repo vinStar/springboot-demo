@@ -1,54 +1,121 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration scan="true" scanPeriod=" 5 seconds">
-    <jmxConfigurator/>
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <substitutionProperty name="logs.base" value="./logs/"/>
+    <substitutionProperty name="logs_name.base" value="log"/>
+    <substitutionProperty name="logs_level.base" value="debug"/>
+    <!--格式化输出：%d表示日期，%thread表示线程名，%-5level：级别从左显示5个字符宽度%msg：日志消息，%n是换行符
 
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
-            <layout class="ch.qos.logback.classic.PatternLayout">
-                <Pattern>
-                    %d{yyyy-MM-dd HH:mm:ss.SSS} [%X] [%thread] %-5level %logger{36} - %msg%n
-                </Pattern>
-            </layout>
+                              value="%d{MM-dd HH:mm:ss.SSS}-[%thread] %logger{0}.%method[%F.%L]: %msg%n"/>
+                              value="%date{yyyy-MM-dd HH:mm:ss} | %highlight(%-5level) | %boldYellow(%thread) | %boldGreen(%logger) | %msg%n"/>
+    -->
+    <substitutionProperty name="logs.pattern"
+                          value="%d{MM-dd HH:mm:ss.SSS} %highlight(%-5level) --- [%boldGreen(%thread)] %cyan(%logger{0}.%method): %msg  %n"/>
+
+    <appender name="info" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${logs.base}/${logs_name.base}_info.log</File>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            ` <pattern>${logs.pattern}</pattern>`
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <FileNamePattern>${logs.base}/${logs_name.base}_info.%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+            <maxFileSize>1024MB</maxFileSize>
+            <maxHistory>5</maxHistory>
+            <totalSizeCap>5GB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <!-- Error Level -->
+    <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${logs.base}/${logs_name.base}_error.log</File>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${logs.pattern}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <FileNamePattern>${logs.base}/${logs_name.base}_error.%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+            <maxFileSize>1024MB</maxFileSize>
+            <maxHistory>5</maxHistory>
+            <totalSizeCap>5GB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="debug" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>${logs.base}/${logs_name.base}_debug.log</File>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${logs.pattern}</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <FileNamePattern>${logs.base}/${logs_name.base}_debug.%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+            <maxFileSize>1024MB</maxFileSize>
+            <maxHistory>10</maxHistory>
+            <totalSizeCap>5GB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${logs.pattern}</pattern>
         </encoder>
     </appender>
 
-    <appender name="DEMO-ROOT" class="ch.qos.logback.classic.sift.SiftingAppender">
-        <discriminator>
-            <Key>Transaction-ID</Key>
-            <DefaultValue>demo</DefaultValue>
-        </discriminator>
-        <sift>
-            <appender name="FILE-${Transaction-ID}" class="ch.qos.logback.core.rolling.RollingFileAppender">
-                <File>logs/${Transaction-ID}/transaction.log</File>
-                <rollingPolicy
-                        class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-                    <!-- rollover daily -->
-                    <fileNamePattern>
-                        logs/${Transaction-ID}/%d{yyyy-MM-dd}/Transaction-ID-%d{yyyy-MM-dd}-%i.log.gz
-                    </fileNamePattern>
-                    <timeBasedFileNamingAndTriggeringPolicy
-                            class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                        <!-- or whenever the file size reaches 100MB -->
-                        <maxFileSize>512MB</maxFileSize>
-                    </timeBasedFileNamingAndTriggeringPolicy>
-                    <maxHistory>60</maxHistory>
-                </rollingPolicy>
-                <encoder>
-                    <pattern>
-                        %d{yyyy-MM-dd HH:mm:ss.SSS} [%X] [%thread] %-5level %logger{56} - %msg%n
-                    </pattern>
-                </encoder>
-            </appender>
-        </sift>
-    </appender>
-
-
-    <!--default logback -->
-    <!--<include resource="org/springframework/boot/logging/logback/base.xml"/>-->
-
-    <logger name="org.springframework" level="DEBUG"/>
-    <logger name="com.example.springboot" level="DEBUG">
-        <appender-ref ref="STDOUT"/>
-        <appender-ref ref="DEMO-ROOT"/>
+    <logger name="org.apache.ibatis" level="debug">
+        <appender-ref ref="console"/>
     </logger>
+
+    <logger name="java.sql" level="INFO">
+        <appender-ref ref="console"/>
+    </logger>
+
+
+
+
+<!--    &lt;!&ndash; ha start &ndash;&gt;-->
+<!--    <appender name="haRollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--        <file>${logs.base}/ha.log</file>-->
+<!--        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+<!--            <level>INFO</level>-->
+<!--        </filter>-->
+
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">-->
+<!--            <FileNamePattern>${logs.base}/ha-%d{yyyy-MM-dd}-%i.log</FileNamePattern>-->
+<!--            <maxFileSize>100MB</maxFileSize>-->
+<!--            <maxHistory>10</maxHistory>-->
+<!--            <totalSizeCap>1GB</totalSizeCap>-->
+<!--        </rollingPolicy>-->
+
+<!--        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">-->
+<!--            <pattern>%d{MM-dd HH:mm:ss.SSS} [%-4level] &#45;&#45; [%thread] [%logger{0}.%method\(%line\)]: %msg%n</pattern>-->
+<!--        </encoder>-->
+<!--    </appender>-->
+
+<!--    <appender name="haAsyncAppender" class="ch.qos.logback.classic.AsyncAppender">-->
+<!--        <filter class="com.tbex.future.ha.io.DiskIOLogFilter" />-->
+<!--        <discardingThreshold>0</discardingThreshold>-->
+<!--        <queueSize>2048</queueSize>-->
+<!--        <appender-ref ref="haRollingFileAppender"/>-->
+<!--    </appender>-->
+
+<!--    <logger name="com.tbex.future.ha" additivity="false" level="INFO">-->
+<!--        <appender-ref ref="haAsyncAppender"/>-->
+<!--    </logger>-->
+<!--    <logger name="com.tbex.future.ha.io" additivity="false" level="INFO">-->
+<!--        <appender-ref ref="haRollingFileAppender"/>-->
+<!--    </logger>-->
+<!--    &lt;!&ndash; ha end &ndash;&gt;-->
+
+    <root level="${logs_level.pattern}">
+        <appender-ref ref="console"/>
+        <appender-ref ref="info"/>
+        <appender-ref ref="error"/>
+        <appender-ref ref="debug"/>
+    </root>
+
 </configuration>

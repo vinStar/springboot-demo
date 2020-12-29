@@ -1,7 +1,5 @@
 package com.example.springboot;
 
-import com.example.springboot.applicationListener.MyListener;
-import com.example.springboot.manager.SpringStartListener;
 import lombok.extern.slf4j.Slf4j;
 import org.redisson.Redisson;
 import org.redisson.config.Config;

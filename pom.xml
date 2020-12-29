@@ -30,12 +30,12 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <!--表是测试时才引用，发布时去掉 -->
-            <scope>test</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-test</artifactId>-->
+<!--            &lt;!&ndash;表是测试时才引用，发布时去掉 &ndash;&gt;-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
 
         <!--自动属性-->
         <dependency>
