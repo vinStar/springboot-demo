@@ -30,11 +30,11 @@ public class TestBean {
 
 	@PostConstruct
 	public void constructPrint() {
-		System.out.println("construct");
+		System.out.println("PostConstruct :: construct");
 	}
 
 	@PreDestroy
 	public void preDestroy() {
-		System.out.println("preDestroy");
+		System.out.println("PreDestroy :: preDestroy");
 	}
 }

@@ -1,0 +1,35 @@
+
+
+server:
+  port: 8087
+
+
+
+
+tbex:
+  ha:
+    locks: lock
+    sleepSecondsBeforeExit: 1
+    sleepSecondsBeforeStartup: 1
+
+debug: true
+
+
+spring:
+  application:
+    name: demo-boot-sentinel
+  cloud:
+    sentinel:
+      transport:
+        port: 8719
+        dashboard: localhost:8080
+
+#添加sentinel依赖后 暴露/actuator/sentinel端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+logging:
+  level:
+    root: debug

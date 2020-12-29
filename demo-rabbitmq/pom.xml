@@ -4,16 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <packaging>pom</packaging>
-    <modules>
-        <module>spring-rabbitmq</module>
-    </modules>
+
     <properties>
         <jdk.version>1.8</jdk.version>
     </properties>
 
     <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>demo.rabbitmq</artifactId>
+    <name>demo-rabbitmq</name>
+    <artifactId>demo-rabbitmq</artifactId>
 
     <parent>
         <artifactId>demo</artifactId>
@@ -44,7 +42,10 @@
 
     <dependencies>
 
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
     </dependencies>
 
 
