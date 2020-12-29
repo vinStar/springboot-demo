@@ -11,3 +11,8 @@ gen
 
 /target/
 /.idea/
+/demo-boot-cms/service-gracefulshutdown/service-gracefulshutdown.iml
+/demo-boot-cms/service/service.iml
+/demo-boot-cms/consumer/consumer.iml
+/demo-boot-cms/boot-demo/boot-demo.iml
+/demo-boot-cms/consumer/consumer.iml
