@@ -43,6 +43,13 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <!--表是测试时才引用，发布时去掉 -->
+            <scope>test</scope>
+        </dependency>
+
         <!--sentinel整合之后会暴露出/actuator/sentinel-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -89,12 +96,6 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.5</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
         </dependency>
 
         <dependency>

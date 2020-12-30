@@ -1,0 +1,10 @@
+server:
+  port: 9991
+
+
+tbex:
+  ha:
+    locks: lock
+    sleepSecondsBeforeExit: 1
+    sleepSecondsBeforeStartup: 1
+
