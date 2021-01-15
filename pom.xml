@@ -13,7 +13,6 @@
     <artifactId>demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <modules>
-        <module>demo-boot</module>
         <module>demo-nacos</module>
     </modules>
 

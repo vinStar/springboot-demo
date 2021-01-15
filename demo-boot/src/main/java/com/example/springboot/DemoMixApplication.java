@@ -1,11 +1,9 @@
 package com.example.springboot;
 
+import com.example.springboot.handler.HandlerTest;
 import lombok.extern.slf4j.Slf4j;
-import org.redisson.Redisson;
-import org.redisson.config.Config;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 /**
@@ -14,7 +12,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @Slf4j
 @SpringBootApplication
 @EnableAsync
-public class DemoApplication {
+public class DemoMixApplication {
 
 
     public static void main(String[] args) {
@@ -28,7 +26,11 @@ public class DemoApplication {
 
 
             log.info("start app");
-            SpringApplication.run(DemoApplication.class, args);
+            SpringApplication.run(DemoMixApplication.class, args);
+
+            //test handler
+            HandlerTest handlerTest = new HandlerTest();
+            handlerTest.test();
         } catch (Throwable e) {
             e.printStackTrace();
         }
