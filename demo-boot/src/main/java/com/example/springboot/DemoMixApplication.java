@@ -1,10 +1,14 @@
 package com.example.springboot;
 
 import com.example.springboot.handler.HandlerTest;
+import com.example.springboot.handler.mqmessage.MqManager;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableAsync;
+
+import javax.annotation.PostConstruct;
 
 /**
  * demo app
@@ -13,6 +17,9 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @SpringBootApplication
 @EnableAsync
 public class DemoMixApplication {
+
+    @Autowired
+    MqManager mqManager;
 
 
     public static void main(String[] args) {
@@ -28,14 +35,26 @@ public class DemoMixApplication {
             log.info("start app");
             SpringApplication.run(DemoMixApplication.class, args);
 
-            //test handler
-            HandlerTest handlerTest = new HandlerTest();
-            handlerTest.test();
+
         } catch (Throwable e) {
             e.printStackTrace();
         }
 
 
+    }
+
+    @PostConstruct
+    void testHandler() {
+        //test handler
+//        HandlerTest handlerTest = new HandlerTest();
+//        handlerTest.test();
+    }
+
+
+    @PostConstruct
+    void testHandlerMessage() {
+        mqManager.initMQ("SELF_TEST_TOPIC");
+        mqManager.initMQ("BenchmarkTest");
     }
 
 //    @Override
